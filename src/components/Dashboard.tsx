@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
       <div className="card">
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center">
-            <h3 className="card-title">Student Dashboard</h3>
+            <h3 className="card-title">Students Dashboard</h3>
             <button onClick={handleLogout} className="btn btn-danger">Logout</button>
           </div>
           <div className="mt-4">
