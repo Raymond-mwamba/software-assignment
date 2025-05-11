@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function ArrivalNote() {
   return (
@@ -25,7 +25,7 @@ function SupervisorLogbookEntry() {
   );
 }
 
-function EvaluationForm()  {
+function EvaluationForm() {
   return (
     <div className="p-4 bg-white rounded-2xl shadow mb-4">
       <h2 className="text-xl font-bold mb-2">Evaluation Form</h2>
@@ -79,13 +79,8 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
     </div>
-    
   );
   // src/App.js
-
-
- 
-  
 };
 
 export default Dashboard;
