@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ArrivalNote() {
@@ -55,11 +55,16 @@ function EvaluationForm() {
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const userEmail = localStorage.getItem("userEmail");
+  const [showIPTSections, setShowIPTSections] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userEmail");
     navigate("/login");
+  };
+
+  const toggleIPTSections = () => {
+    setShowIPTSections(!showIPTSections);
   };
 
   return (
@@ -75,12 +80,28 @@ const Dashboard: React.FC = () => {
           <div className="mt-4">
             <h5>Welcome {userEmail || "Student"}!</h5>
             <p>This is your dashboard where you can view your information.</p>
+            <button
+              onClick={toggleIPTSections}
+              className="btn btn-primary mt-3"
+            >
+              IPT
+            </button>
           </div>
         </div>
       </div>
+
+      {showIPTSections && (
+        <div className="mt-4">
+          <div className="mb-4">
+            <h2 className="text-xl font-bold">Application</h2>
+            <p>Details about the application process...</p>
+          </div>
+          <ArrivalNote />
+          <SupervisorLogbookEntry />
+        </div>
+      )}
     </div>
   );
-  // src/App.js
 };
 
 export default Dashboard;
