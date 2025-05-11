@@ -98,6 +98,7 @@ const Dashboard: React.FC = () => {
           </div>
           <ArrivalNote />
           <SupervisorLogbookEntry />
+          <EvaluationForm />
         </div>
       )}
     </div>
