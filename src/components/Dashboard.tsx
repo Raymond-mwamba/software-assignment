@@ -16,7 +16,7 @@ function ArrivalNote() {
 function SupervisorLogbookEntry() {
   return (
     <div className="p-4 bg-white rounded-2xl shadow mb-4">
-      <h2 className="text-xl font-bold mb-2">Supervisor Logbook Entry</h2>
+      <h2 className="text-xl font-bold mb-2">Logbook Entry</h2>
       <textarea
         className="w-full p-2 border rounded"
         placeholder="Supervisor's logbook notes..."
