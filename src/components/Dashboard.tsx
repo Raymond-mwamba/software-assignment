@@ -1,53 +1,78 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createRipple } from "../utils/rippleEffect.tsx";
+import "../enhanced-styles.css";
 
 function ArrivalNote() {
   return (
-    <div className="p-4 bg-white rounded-2xl shadow mb-4">
-      <h2 className="text-xl font-bold mb-2">Arrival Note</h2>
-      <textarea
-        className="w-full p-2 border rounded"
-        placeholder="Write your arrival note here..."
-      ></textarea>
+    <div className="glass-card gradient-border animate-fade-in">
+      <div className="card-content">
+        <h2 className="text-xl font-bold mb-4 enhanced-text">Arrival Note</h2>
+        <textarea
+          className="enhanced-input w-full"
+          placeholder="Write your arrival note here..."
+          rows={4}
+        ></textarea>
+      </div>
     </div>
   );
 }
 
 function SupervisorLogbookEntry() {
   return (
-    <div className="p-4 bg-white rounded-2xl shadow mb-4">
-      <h2 className="text-xl font-bold mb-2">Logbook Entry</h2>
-      <textarea
-        className="w-full p-2 border rounded"
-        placeholder="Supervisor's logbook notes..."
-      ></textarea>
+    <div className="glass-card gradient-border animate-fade-in">
+      <div className="card-content">
+        <h2 className="text-xl font-bold mb-4 enhanced-text">Logbook Entry</h2>
+        <textarea
+          className="enhanced-input w-full"
+          placeholder="Supervisor's logbook notes..."
+          rows={4}
+        ></textarea>
+      </div>
     </div>
   );
 }
 
 function EvaluationForm() {
   return (
-    <div className="p-4 bg-white rounded-2xl shadow mb-4">
-      <h2 className="text-xl font-bold mb-2">Evaluation Form</h2>
-      <form className="space-y-4">
-        <input
-          className="w-full p-2 border rounded"
-          type="text"
-          placeholder="Student Name"
-        />
-        <input
-          className="w-full p-2 border rounded"
-          type="number"
-          placeholder="Score (0–100)"
-        />
-        <textarea
-          className="w-full p-2 border rounded"
-          placeholder="Remarks"
-        ></textarea>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Submit
-        </button>
-      </form>
+    <div className="glass-card gradient-border animate-fade-in">
+      <div className="card-content">
+        <h2 className="text-xl font-bold mb-4 enhanced-text">Evaluation Form</h2>
+        <form className="space-y-4">
+          <div className="form-group">
+            <label className="enhanced-text">Student Name</label>
+            <input
+              className="enhanced-input w-full"
+              type="text"
+              placeholder="Enter student name"
+            />
+          </div>
+          <div className="form-group">
+            <label className="enhanced-text">Score</label>
+            <input
+              className="enhanced-input w-full"
+              type="number"
+              placeholder="Enter score (0-100)"
+            />
+          </div>
+          <div className="form-group">
+            <label className="enhanced-text">Remarks</label>
+            <textarea
+              className="enhanced-input w-full"
+              placeholder="Enter remarks"
+              rows={4}
+            ></textarea>
+          </div>
+          <div className="text-right">
+            <button 
+              className="enhanced-button"
+              onClick={(e) => createRipple(e)}
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
@@ -68,33 +93,42 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card">
-        <div className="card-body">
-          <div className="d-flex justify-content-between align-items-center">
-            <h3 className="card-title">Students Dashboard</h3>
-            <button onClick={handleLogout} className="btn btn-danger">
+    <div className="container mx-auto px-4 py-8">
+      <div className="glass-card gradient-border animate-fade-in">
+        <div className="card-content">
+          <div className="header-container">
+            <h3 className="text-2xl font-bold enhanced-text">Students Dashboard</h3>
+            <button 
+              onClick={handleLogout} 
+              className="enhanced-button"
+              onMouseDown={(e) => createRipple(e)}
+            >
               Logout
             </button>
           </div>
-          <div className="mt-4">
-            <h5>Welcome {userEmail || "Student"}!</h5>
-            <p>This is your dashboard where you can view your information.</p>
-            <button
-              onClick={toggleIPTSections}
-              className="btn btn-primary mt-3"
-            >
-              IPT
-            </button>
+          <div className="mt-6">
+            <h5 className="text-xl enhanced-text">Welcome {userEmail || "Student"}!</h5>
+            <p className="mt-2 enhanced-text">This is your dashboard where you can view your information.</p>
+            <div className="mt-4">
+              <button
+                onClick={toggleIPTSections}
+                className="enhanced-button"
+                onMouseDown={(e) => createRipple(e)}
+              >
+                {showIPTSections ? "Hide IPT" : "Show IPT"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {showIPTSections && (
-        <div className="mt-4">
-          <div className="mb-4">
-            <h2 className="text-xl font-bold">Application</h2>
-            <p>Details about the application process...</p>
+        <div className="mt-8 space-y-6">
+          <div className="glass-card gradient-border animate-fade-in">
+            <div className="card-content">
+              <h2 className="text-2xl font-bold enhanced-text">Application</h2>
+              <p className="mt-2 enhanced-text">Details about the application process...</p>
+            </div>
           </div>
           <ArrivalNote />
           <SupervisorLogbookEntry />

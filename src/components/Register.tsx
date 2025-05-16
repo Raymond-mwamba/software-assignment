@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createRipple } from "../utils/rippleEffect.tsx";
+import "../enhanced-styles.css";
 
 interface RegisterFormData {
   email: string;
@@ -23,68 +25,82 @@ const Register: React.FC = () => {
       alert("Passwords don't match!");
       return;
     }
-    // Here you would typically send the registration data to your backend
     localStorage.setItem('registrationSuccess', 'true');
     navigate('/login');
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h3 className="card-title text-center mb-4">Student Registration</h3>
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label htmlFor="fullName" className="form-label">Full Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="fullName"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    value={formData.password}
-                    onChange={(e) => setFormData({...formData, password: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="confirmPassword"
-                    value={formData.confirmPassword}
-                    onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-                    required
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary w-100">Register</button>
-              </form>
-              <div className="text-center mt-3">
-                <p>Already have an account? <a href="/login">Login here</a></p>
+    <div className="container mx-auto px-4 py-8 min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-md">
+        <div className="glass-card gradient-border animate-fade-in">
+          <div className="card-content">
+            <h3 className="text-2xl font-bold text-center mb-6 enhanced-text">Student Registration</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="form-group">
+                <label htmlFor="fullName" className="enhanced-text">Full Name</label>
+                <input
+                  type="text"
+                  className="enhanced-input w-full"
+                  id="fullName"
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                  required
+                />
               </div>
+
+              <div className="form-group">
+                <label htmlFor="email" className="enhanced-text">Email</label>
+                <input
+                  type="email"
+                  className="enhanced-input w-full"
+                  id="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="password" className="enhanced-text">Password</label>
+                <input
+                  type="password"
+                  className="enhanced-input w-full"
+                  id="password"
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="confirmPassword" className="enhanced-text">Confirm Password</label>
+                <input
+                  type="password"
+                  className="enhanced-input w-full"
+                  id="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                  required
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="enhanced-button w-full"
+                onMouseDown={(e) => createRipple(e)}
+              >
+                Register
+              </button>
+            </form>
+
+            <div className="text-center mt-6">
+              <p className="enhanced-text">
+                Already have an account?{' '}
+                <a href="/login" className="text-blue-400 hover:text-blue-300 transition-colors">
+                  Login here
+                </a>
+              </p>
             </div>
           </div>
         </div>
